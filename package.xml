@@ -2,7 +2,7 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>realsense_hardware_interface</name>
-  <version>0.0.1</version>
+  <version>0.0.2</version>
   <description>ros2 hardware interface for realsense camera</description>
   <maintainer email="ms.kataoka@gmail.com">masaya</maintainer>
   <license>apache 2.0</license>
@@ -18,23 +18,21 @@
   <depend>hardware_interface</depend>
   <depend>tf2_msgs</depend>
   <depend>nav_msgs</depend>
-  <depend>quaternion_operation</depend>
   <depend>libpoco-dev</depend>
   <depend>librealsense2</depend>
   <depend>sensor_msgs</depend>
   <depend>cv_bridge</depend>
   <depend>image_transport</depend>
+  <depend>libssl-dev</depend>
+  <depend>libusb-1.0-dev</depend>
+  <depend>pkg-config</depend>
+  <depend>gtk3</depend>
+  <depend>diagnostic_msgs</depend>
   
   <exec_depend>rviz2</exec_depend>
 
   <test_depend>ament_lint_auto</test_depend>
-  <test_depend>ament_cmake_gtest</test_depend>
-  <test_depend>ament_cmake_clang_format</test_depend>
-  <test_depend>ament_cmake_copyright</test_depend>
-  <test_depend>ament_cmake_flake8</test_depend>
-  <test_depend>ament_cmake_lint_cmake</test_depend>
-  <test_depend>ament_cmake_pep257</test_depend>
-  <test_depend>ament_cmake_xmllint</test_depend>
+  <test_depend>ouxt_lint_common</test_depend>
 
   <export>
     <build_type>ament_cmake</build_type>
