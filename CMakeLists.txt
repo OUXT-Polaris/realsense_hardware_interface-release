@@ -11,6 +11,10 @@ if(NOT CMAKE_CXX_STANDARD)
   set(CMAKE_CXX_STANDARD 14)
 endif()
 
+if($ENV{ROS_DISTRO} STREQUAL "galactic")
+  add_definitions(-DGALACTIC)
+endif()
+
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
@@ -22,7 +26,6 @@ find_package(hardware_interface REQUIRED)
 find_package(nav_msgs REQUIRED)
 find_package(controller_interface REQUIRED)
 find_package(realsense2 REQUIRED)
-find_package(quaternion_operation REQUIRED)
 find_package(tf2_msgs REQUIRED)
 find_package(OpenCV REQUIRED)
 find_package(image_transport REQUIRED)
@@ -58,7 +61,6 @@ ament_target_dependencies(realsense_hardware_interface
   realtime_tools
   nav_msgs
   tf2_msgs
-  quaternion_operation
   image_transport
   sensor_msgs
   cv_bridge
@@ -70,6 +72,7 @@ pluginlib_export_plugin_description_file(hardware_interface realsense_hardware_i
 add_library(realsense_controller_interface SHARED
   src/rs2_pose_publisher.cpp
   src/rs2_image_publisher.cpp
+  src/rs2_imu_publisher.cpp
   src/util.cpp
 )
 target_include_directories(
@@ -85,13 +88,13 @@ target_link_libraries(realsense_controller_interface
 )
 ament_target_dependencies(realsense_controller_interface
   controller_interface
+  hardware_interface
   pluginlib
   rclcpp
   ros2_control
   realtime_tools
   nav_msgs
   tf2_msgs
-  quaternion_operation
   image_transport
   sensor_msgs
   cv_bridge
@@ -111,7 +114,6 @@ ament_export_dependencies(
   realtime_tools
   nav_msgs
   tf2_msgs
-  quaternion_operation
   image_transport
   sensor_msgs
   cv_bridge
