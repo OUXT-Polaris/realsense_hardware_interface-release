@@ -1,5 +1,5 @@
 repositories:
-  quaternion_operation:
-    url: https://github.com/OUXT-Polaris/quaternion_operation.git
+  ouxt_common:
     type: git
-    version: ros2
+    url: https://github.com/OUXT-Polaris/ouxt_common.git
+    version: master
